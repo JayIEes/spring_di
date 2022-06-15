@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+<!-- 정수에 의존성 주입 -->
+<bean id="it" class="day0518.InjectionTest">
+	 <!-- <constructor-arg value="2022" type="int"/> -->
+	<constructor-arg>
+		<value type="java.lang.Integer">2022</value>
+	</constructor-arg>
+</bean>
+
+<!-- List 의존성 주입 -->
+<bean id="itList" class="day0518.InjectionTest">
+	<constructor-arg>
+		<list>
+			<value>Spring DI</value>
+			<value>Spring MVC</value>
+			<value type="java.lang.String">2022</value>
+			<value>05</value>
+			<value>18</value>
+			<value>Spring DI</value>
+		</list>
+	</constructor-arg>
+</bean>
+
+
+<!-- java.util.set 의존성 주입 -->
+<bean id="itSet" class="day0518.InjectionTest">
+	<constructor-arg>
+		<set>
+			<value>Spring DI</value>
+			<value>Spring MVC</value>
+			<value type="java.lang.String">2022</value>
+			<value>05</value>
+			<value>18</value>
+			<value>Spring DI</value>
+		</set>
+	</constructor-arg>
+</bean>
+
+
+
+<!-- java.util.Map 의존성 주입 -->
+<bean id="itMap" class="day0518.InjectionTest" scope="singleton">
+	<constructor-arg>
+		<map>
+			<entry><!-- 키와 값의 쌍 -->
+				<key><!-- 키 -->
+					<value>Spring</value>
+				</key>
+				<value>경량 프레임워크</value><!-- 값 -->
+			</entry>
+			<entry>
+				<key>
+					<value>java</value>
+				</key>
+				<value>완벽한 OOP 언어</value>
+			</entry>
+			<entry>
+				<key>
+					<value>Oracle</value>
+				</key>
+				<value>대용량 데이터 베이스</value>
+			</entry>
+		</map>
+	</constructor-arg>
+</bean>
+
+
+<!-- singleton pattern이 적용된 클래스, factory-method속성을 선언하여 instance를 반환하는 method를 호출한다. -->
+<bean id="single" class="day0518.Singleton" factory-method="getInstance"/><!-- factory-method 없어도 동작은 함 -->
+
+
+</beans>
+
+
+
+
+
+
+
+
+

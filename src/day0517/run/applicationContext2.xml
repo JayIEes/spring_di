@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd">
+<!-- 의존성 주입할 객체 설정 -->
+<bean id="od" class="day0517.dao.OracleDAO"/>
+
+<!-- 의존성 주입받을 객체 설정 -->
+
+<!-- 생성자 의존성 주입 -->
+<bean id="is" class="day0517.service.InjectionService">
+	<constructor-arg ref="od"/>
+</bean>
+
+ 
+<!-- method 의존성 주입 : 기본 생성자가 반드시 존재해야한다. -->
+<bean id="is2" class="day0517.service.InjectionService">
+	<property name="dao" ref="od"/>
+</bean>
+
+<!-- String 의존성 주입 -->
+<bean id="strInjection" class="day0517.service.InjectionService2">
+	<constructor-arg value="안녕" type="java.lang.String"/>
+	<!-- type으로 String을 쓸때는 java.lang.String이라고 정확하게 써주는 것이 좋다. -->
+</bean>
+
+
+</beans>
+
+
+
+
+
+
